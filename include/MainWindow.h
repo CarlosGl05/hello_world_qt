@@ -16,10 +16,12 @@ public:
 
 private slots:
     void on_buttonClicked();
+    void on_button2Clicked();
 
 private:
     QLabel      *label_;
     QPushButton *button_;
+    QPushButton *button2_;
     QLineEdit   *lineEdit_;
     QTextEdit   *textEdit_;
 };

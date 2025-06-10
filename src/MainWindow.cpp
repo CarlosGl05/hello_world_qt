@@ -7,8 +7,8 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    setWindowTitle("Solo un botón y mensaje");
-    resize(300, 120);
+    setWindowTitle("ejemplo 2");
+    resize(300, 150);
 
     QWidget *central = new QWidget(this);
     setCentralWidget(central);
@@ -21,7 +21,11 @@ MainWindow::MainWindow(QWidget *parent)
     QPushButton *button = new QPushButton("Mostrar mensaje", this);
     vbox->addWidget(button);
 
+    QPushButton *button2 = new QPushButton("Mostrar mensaje 2", this);
+    vbox->addWidget(button2);
+
     connect(button, &QPushButton::clicked, this, &MainWindow::on_buttonClicked);
+    connect(button2, &QPushButton::clicked, this, &MainWindow::on_button2Clicked);
 
     central->setLayout(vbox);
 }
@@ -33,4 +37,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_buttonClicked()
 {
     QMessageBox::information(this, "Mensaje", "loba");
+}
+
+void MainWindow::on_button2Clicked()
+{
+    QMessageBox::information(this, "Mensaje", "loba 2");
 }
