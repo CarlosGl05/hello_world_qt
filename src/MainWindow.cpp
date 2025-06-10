@@ -1,17 +1,36 @@
 #include "MainWindow.h"
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QMessageBox>
+#include <QLabel>
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-    // Crear un QLabel con el texto "¡Hola Mundo!" y centrarlo
-    QLabel *label = new QLabel("¡Hola Mundo!", this);
-    label->setAlignment(Qt::AlignCenter);
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+{
+    setWindowTitle("Solo un botón y mensaje");
+    resize(300, 120);
 
-    // Establecer como widget central de la ventana
-    setCentralWidget(label);
+    QWidget *central = new QWidget(this);
+    setCentralWidget(central);
 
-    // Opcional: establecer tamaño mínimo de la ventana
-    this->setMinimumSize(400, 200);
+    QVBoxLayout *vbox = new QVBoxLayout;
+
+    QLabel *label = new QLabel("Presiona el botón para ver el mensaje", this);
+    vbox->addWidget(label);
+
+    QPushButton *button = new QPushButton("Mostrar mensaje", this);
+    vbox->addWidget(button);
+
+    connect(button, &QPushButton::clicked, this, &MainWindow::on_buttonClicked);
+
+    central->setLayout(vbox);
 }
 
-MainWindow::~MainWindow() {
-    // Qt se encarga de eliminar los widgets hijos automáticamente
+MainWindow::~MainWindow()
+{
+}
+
+void MainWindow::on_buttonClicked()
+{
+    QMessageBox::information(this, "Mensaje", "loba");
 }

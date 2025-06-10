@@ -8,7 +8,7 @@
       "args": [
         "-spec",
         "win32-g++",
-        "hello_world_qt.pro",
+        "eje2.pro",
         "-o",
         "Makefile"
       ],
